@@ -1,0 +1,24 @@
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="br.com.luizgadao.animation.FrameAnimation"
+    android:padding="@dimen/activity_horizontal_margin">
+
+    <ImageView
+        android:id="@+id/imvAnimation"
+        android:layout_width="278dp"
+        android:layout_height="215dp"
+        android:background="@drawable/coracao0001"
+        android:layout_centerInParent="true"/>
+
+    <Button
+        android:id="@+id/btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="ok"
+        android:layout_below="@id/imvAnimation"
+        android:layout_centerHorizontal="true"/>
+
+</RelativeLayout>

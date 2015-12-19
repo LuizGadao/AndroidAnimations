@@ -5,8 +5,11 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.view.animation.RotateAnimation;
+import android.view.animation.ScaleAnimation;
 import android.view.animation.TranslateAnimation;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -16,6 +19,8 @@ import android.widget.Toast;
  * A placeholder fragment containing a simple view.
  */
 public class MainActivityFragment extends Fragment implements Animation.AnimationListener {
+
+    private static final int DEFAULT_DURATION = 2000;
 
     ImageView ball;
     Button btnScale, btnRotate, btnTransform, btnAlpha;
@@ -38,7 +43,11 @@ public class MainActivityFragment extends Fragment implements Animation.Animatio
         btnAlpha.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                animApha = loadAnimation(R.anim.alpha);
+                //animApha = loadAnimation(R.anim.alpha);
+                AlphaAnimation alphaAnimation = new AlphaAnimation(1, 0);
+                alphaAnimation.setDuration(DEFAULT_DURATION);
+                animApha = alphaAnimation;
+                animApha.setAnimationListener(MainActivityFragment.this);
                 ball.startAnimation(animApha);
             }
         });
@@ -46,7 +55,16 @@ public class MainActivityFragment extends Fragment implements Animation.Animatio
         btnRotate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                animRotate = loadAnimation(R.anim.rotate);
+                //animRotate = loadAnimation(R.anim.rotate);
+                //RotateAnimation rotateAnim = new RotateAnimation(0, 360);
+                RotateAnimation rotateAnim = new RotateAnimation(0, 360,
+                        Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0.5f);
+                rotateAnim.setDuration(DEFAULT_DURATION);
+                rotateAnim.setRepeatCount(2);
+                rotateAnim.setRepeatMode(Animation.REVERSE);
+                animRotate = rotateAnim;
+                animRotate.setAnimationListener(MainActivityFragment.this);
+
                 ball.startAnimation(animRotate);
             }
         });
@@ -56,9 +74,8 @@ public class MainActivityFragment extends Fragment implements Animation.Animatio
             public void onClick(View v) {
                 //animTrans = loadAnimation(R.anim.transform);
                 //anim to x with "dp"
-                TranslateAnimation translateAnimation = new TranslateAnimation(0, getResources().getDimension(R.dimen.toX), 0, 0);//(TranslateAnimation) animTrans;
-                translateAnimation.setDuration(1500);
-
+                TranslateAnimation translateAnimation = new TranslateAnimation(0, getResources().getDimension(R.dimen.toX), 0, 0);
+                translateAnimation.setDuration(DEFAULT_DURATION);
                 animTrans = translateAnimation;
                 animTrans.setAnimationListener(MainActivityFragment.this);
                 ball.startAnimation(animTrans);
@@ -68,7 +85,14 @@ public class MainActivityFragment extends Fragment implements Animation.Animatio
         btnScale.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                animScale = loadAnimation(R.anim.scale);
+                //animScale = loadAnimation(R.anim.scale);
+
+                ScaleAnimation scaleAnimation = new ScaleAnimation(1, 2, 1, 2,
+                        Animation.RELATIVE_TO_SELF, 0.5f,
+                        Animation.RELATIVE_TO_SELF, 0.5f);
+                scaleAnimation.setDuration(DEFAULT_DURATION);
+                animScale = scaleAnimation;
+                animScale.setAnimationListener(MainActivityFragment.this);
                 ball.startAnimation(animScale);
             }
         });
