@@ -23,7 +23,7 @@ public class MainActivityFragment extends Fragment implements Animation.Animatio
     private static final int DEFAULT_DURATION = 2000;
 
     ImageView ball;
-    Button btnScale, btnRotate, btnTransform, btnAlpha;
+    Button btnScale, btnRotate, btnTranslate, btnAlpha;
     Animation animApha, animRotate, animTrans, animScale;
 
     public MainActivityFragment() {
@@ -37,7 +37,7 @@ public class MainActivityFragment extends Fragment implements Animation.Animatio
         ball = (ImageView) v.findViewById(R.id.ball);
         btnAlpha = (Button) v.findViewById(R.id.btnAlpha);
         btnRotate = (Button) v.findViewById(R.id.btnRotate);
-        btnTransform = (Button) v.findViewById(R.id.btnTrans);
+        btnTranslate = (Button) v.findViewById(R.id.btnTrans);
         btnScale = (Button) v.findViewById(R.id.btnScale);
 
         btnAlpha.setOnClickListener(new View.OnClickListener() {
@@ -69,13 +69,14 @@ public class MainActivityFragment extends Fragment implements Animation.Animatio
             }
         });
 
-        btnTransform.setOnClickListener(new View.OnClickListener() {
+        btnTranslate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //animTrans = loadAnimation(R.anim.transform);
+                //animTrans = loadAnimation(R.anim.translate);
                 //anim to x with "dp"
                 TranslateAnimation translateAnimation = new TranslateAnimation(0, getResources().getDimension(R.dimen.toX), 0, 0);
                 translateAnimation.setDuration(DEFAULT_DURATION);
+                translateAnimation.setFillAfter(true);
                 animTrans = translateAnimation;
                 animTrans.setAnimationListener(MainActivityFragment.this);
                 ball.startAnimation(animTrans);
