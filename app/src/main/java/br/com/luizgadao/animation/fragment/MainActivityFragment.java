@@ -1,4 +1,4 @@
-package br.com.luizgadao.animation;
+package br.com.luizgadao.animation.fragment;
 
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
@@ -14,6 +14,8 @@ import android.view.animation.TranslateAnimation;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
+
+import br.com.luizgadao.animation.R;
 
 /**
  * A placeholder fragment containing a simple view.

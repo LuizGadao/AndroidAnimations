@@ -1,4 +1,4 @@
-package br.com.luizgadao.animation;
+package br.com.luizgadao.animation.fragment;
 
 
 import android.app.Fragment;
@@ -9,6 +9,8 @@ import android.view.ViewGroup;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.ImageView;
+
+import br.com.luizgadao.animation.R;
 
 
 /**
